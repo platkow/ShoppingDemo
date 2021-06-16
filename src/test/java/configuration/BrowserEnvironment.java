@@ -8,8 +8,10 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.ie.InternetExplorerOptions;
+import org.openqa.selenium.support.events.EventFiringWebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import pages.WebListener;
 
 public class BrowserEnvironment {
     private String browserName = "chrome";
@@ -18,7 +20,9 @@ public class BrowserEnvironment {
     private boolean attachScreenshot;
     private boolean headlessBrowser;
     private Logger logger;
-    private WebDriver driver;
+    private WebDriver webDriver;
+    private WebListener webListener;
+    private EventFiringWebDriver driver;
 
     public BrowserEnvironment() {
         this.headlessBrowser = false;
@@ -38,27 +42,36 @@ public class BrowserEnvironment {
     }
 
     public WebDriver getDriver() {
-        WebDriver driver;
+        EventFiringWebDriver driver;
 
         switch (this.browserName) {
             case "chrome":
                 ChromeOptions optionsChrome = new ChromeOptions();
                 WebDriverManager.chromedriver().setup();
                 optionsChrome.addArguments("Start-maximized");
-                driver = new ChromeDriver(optionsChrome);
+                webDriver = new ChromeDriver(optionsChrome);
+                driver = new EventFiringWebDriver(webDriver);
+                webListener = new WebListener();
+                driver.register(webListener);
                 driver.get(System.getProperty("appUrl"));
                 break;
             case "firefox":
                 FirefoxOptions optionsFirefox = new FirefoxOptions();
                 WebDriverManager.firefoxdriver().setup();
                 optionsFirefox.addArguments("Start-maximized");
-                driver = new FirefoxDriver(optionsFirefox);
+                webDriver = new FirefoxDriver(optionsFirefox);
+                driver = new EventFiringWebDriver(webDriver);
+                webListener = new WebListener();
+                driver.register(webListener);
                 driver.get(System.getProperty("appUrl"));
                 break;
             default:
                 InternetExplorerOptions optionsIE = new InternetExplorerOptions();
                 WebDriverManager.iedriver().setup();
-                driver = new InternetExplorerDriver(optionsIE);
+                webDriver = new InternetExplorerDriver(optionsIE);
+                driver = new EventFiringWebDriver(webDriver);
+                webListener = new WebListener();
+                driver.register(webListener);
                 driver.get(System.getProperty("appUrl"));
         }
         this.driver = driver;

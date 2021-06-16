@@ -3,12 +3,14 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
+import providers.RandomStringGenerator;
 
 public class LoginPage extends BasePage{
 
     public LoginPage(WebDriver driver) {
         super(driver);
     }
+    RandomStringGenerator rndString = new RandomStringGenerator();
 
     @FindBy(css = "#email_create")
     private WebElement emailField;
@@ -17,13 +19,8 @@ public class LoginPage extends BasePage{
     private WebElement createAccountBtn;
 
     public RegistrationPage openRegistrationPage(){
-        sendKeys(emailField, "kasssqaia@wp.pl");
+        sendKeys(emailField, rndString.generateRandomEmail(5));
         click(createAccountBtn);
         return new RegistrationPage(getDriver());
     }
-
-    /*private String randomEmailGenerator(){
-        //tu kontynuuj
-    }*/
-
 }

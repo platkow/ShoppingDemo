@@ -64,7 +64,6 @@ public class RegistrationPage extends BasePage{
     private WebElement submitAccountBtn;
 
 
-
     public UserAccountPage registerNewUser(User user){
         genderMaleRadio.click();
         customerFirstName.sendKeys(user.getCustomerFirstName());
@@ -72,27 +71,27 @@ public class RegistrationPage extends BasePage{
         password.sendKeys(user.getPassword());
 
         Select selectDay = new Select(days);
-        selectDay.selectByValue(user.getDayOfBirth());
+        selectDay.selectByValue(String.valueOf(user.getDayOfBirth()));
 
         Select selectMonth = new Select(months);
-        selectMonth.selectByValue(user.getMonthOfBirth());
+        selectMonth.selectByValue(String.valueOf(user.getMonthOfBirth()));
 
         Select selectYear = new Select(years);
-        selectYear.selectByValue(user.getYearOfBirth());
+        selectYear.selectByValue(String.valueOf(user.getYearOfBirth()));
 
         company.sendKeys(user.getCompany());
         address.sendKeys(user.getAddress());
         city.sendKeys(user.getCity());
 
         Select stateSelect = new Select(states);
-        stateSelect.selectByVisibleText(user.getState());
+        stateSelect.selectByValue(String.valueOf(user.getState()));
 
-        postcode.sendKeys(user.getPostalCode());
+        postcode.sendKeys(String.valueOf(user.getPostalCode()));
 
         Select selectCountry = new Select(country);
         selectCountry.selectByVisibleText(user.getCountry());
 
-        mobilePhone.sendKeys(user.getMobilePhone());
+        mobilePhone.sendKeys(String.valueOf(user.getMobilePhone()));
 
         addressAlias.clear();
         addressAlias.sendKeys(user.getAddressAlias());
@@ -100,14 +99,4 @@ public class RegistrationPage extends BasePage{
 
         return new UserAccountPage(getDriver());
     }
-
-    private WebElement getRandomElement(List<WebElement> elements) {
-        Random rnd = new Random();
-        int randomNumber = rnd.nextInt(elements.size());
-        return elements.get(randomNumber);
-    }
-
-
-
-
 }
