@@ -77,4 +77,36 @@ public class BrowserEnvironment {
         this.driver = driver;
         return this.driver;
     }
+
+    public String getBrowserName() {
+        return browserName;
+    }
+
+    public int getWebElementTimeOut() {
+        return webElementTimeOut;
+    }
+
+    public int getWebBrowserImplicitTimeOut() {
+        return webBrowserImplicitTimeOut;
+    }
+
+    public boolean isAttachScreenshot() {
+        return attachScreenshot;
+    }
+
+    public boolean isHeadlessBrowser() {
+        return headlessBrowser;
+    }
+
+    public Logger getLogger() {
+        return logger;
+    }
+
+    public WebDriver getWebDriver() {
+        return webDriver;
+    }
+
+    public WebListener getWebListener() {
+        return webListener;
+    }
 }

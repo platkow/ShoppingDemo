@@ -2,6 +2,7 @@ package tests;
 
 import models.User;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -27,6 +28,7 @@ public class ShoppingTest extends TestBase {
     }
 
     @Test
+    @DisplayName("Automation practice")
     public void shouldBuyProduct() {
         logger.info(">>>>>>>>>>   Start test   >>>>>>>>>>");
 

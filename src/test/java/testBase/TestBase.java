@@ -31,7 +31,7 @@ public class TestBase {
         environmentProperty = EnvironmentProperty.getInstance();
         browserEnvironment = new BrowserEnvironment();
         driver = browserEnvironment.getDriver();
-        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(browserEnvironment.getWebBrowserImplicitTimeOut(), TimeUnit.SECONDS);
         logger.debug("Driver initialization.");
     }
 

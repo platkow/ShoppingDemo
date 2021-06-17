@@ -35,7 +35,7 @@ public class BasePage {
     }
 
     public void selectCbx(WebElement element) {
-        logger.info("######## Select element: " + element.getText());
+        logger.info("######## Select element: " + element.getTagName() + " " + element.getText());
         if (!element.isSelected()) {
             element.click();
         }

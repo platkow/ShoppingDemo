@@ -33,19 +33,19 @@ public class RegistrationPage extends BasePage {
     @FindBy(css = "#years")
     private WebElement years;
 
-    @FindBy(css = "#companyFld")
+    @FindBy(css = "#company")
     private WebElement companyFld;
 
     @FindBy(css = "#address1")
     private WebElement addressFld;
 
-    @FindBy(css = "#cityFld")
+    @FindBy(css = "#city")
     private WebElement cityFld;
 
     @FindBy(css = "#id_state")
     private WebElement states;
 
-    @FindBy(css = "#postcodeFld")
+    @FindBy(css = "#postcode")
     private WebElement postcodeFld;
 
     @FindBy(css = "#id_country")
