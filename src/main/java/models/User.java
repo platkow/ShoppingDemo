@@ -21,6 +21,7 @@ public class User {
     public User(String customerFirstName, String customerLastName, String password, int dayOfBirth, int monthOfBirth,
                 int yearOfBirth, String company, String address, String city, int state, int postalCode,
                 String country, int mobilePhone, String addressAlias) {
+
         this.customerFirstName = customerFirstName;
         this.customerLastName = customerLastName;
         this.password = password;
@@ -93,7 +94,7 @@ public class User {
         return addressAlias;
     }
 
-    public static final class Builder{
+    public static final class Builder {
         private String customerFirstName;
         private String customerLastName;
         private String password;
@@ -179,50 +180,49 @@ public class User {
             return this;
         }
 
-        public User build(){
-            if(customerFirstName.isEmpty()){
-                throw new IllegalStateException("Customer first name cannot be empty");
+        public User build() {
+            if (customerFirstName.isEmpty()) {
+                throw new IllegalStateException("Customer first name cannot be empty.");
             }
 
-            if(customerLastName.isEmpty()){
-                throw new IllegalStateException("Customer last name cannot be empty");
+            if (customerLastName.isEmpty()) {
+                throw new IllegalStateException("Customer last name cannot be empty.");
             }
 
-            if(password.isEmpty()){
-                throw new IllegalStateException("Password cannot be empty");
+            if (password.isEmpty()) {
+                throw new IllegalStateException("Password cannot be empty.");
             }
 
-            if(address.isEmpty()){
-                throw new IllegalStateException("Address cannot be empty");
+            if (address.isEmpty()) {
+                throw new IllegalStateException("Address cannot be empty.");
             }
 
-            if(city.isEmpty()){
-                throw new IllegalStateException("City cannot be empty");
+            if (city.isEmpty()) {
+                throw new IllegalStateException("City cannot be empty.");
             }
 
-            if(String.valueOf(state).isEmpty()){
-                throw new IllegalStateException("State cannot be empty");
+            if (String.valueOf(state).isEmpty()) {
+                throw new IllegalStateException("State cannot be empty.");
             }
 
-            if(String.valueOf(postalCode).isEmpty()){
-                throw new IllegalStateException("Zip/postal code cannot be empty");
+            if (String.valueOf(postalCode).isEmpty()) {
+                throw new IllegalStateException("Zip/postal code cannot be empty.");
             }
 
-            if(country.isEmpty()){
-                throw new IllegalStateException("Country cannot be empty");
+            if (country.isEmpty()) {
+                throw new IllegalStateException("Country cannot be empty.");
             }
 
-            if(String.valueOf(mobilePhone).isEmpty()){
-                throw new IllegalStateException("Mobile phone cannot be empty");
+            if (String.valueOf(mobilePhone).isEmpty()) {
+                throw new IllegalStateException("Mobile phone cannot be empty.");
             }
 
-            if(addressAlias.isEmpty()){
-                throw new IllegalStateException("Address alias cannot be empty");
+            if (addressAlias.isEmpty()) {
+                throw new IllegalStateException("Address alias cannot be empty.");
             }
+
             return new User(customerFirstName, customerLastName, password, dayOfBirth, monthOfBirth, yearOfBirth, company, address,
                     city, state, postalCode, country, mobilePhone, addressAlias);
         }
     }
-
-
 }

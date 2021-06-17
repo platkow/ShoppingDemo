@@ -38,7 +38,7 @@ public class EnvironmentProperty {
             logger.debug(">>>>> Environment name : " + this.APP_ENV);
             loadAllEnvPropertiesToSystem(this.APP_ENV);
         } else {
-            logger.error("Please provide environment property");
+            logger.error("Please provide environment property.");
             assertThat(true, equalTo(false));
         }
     }

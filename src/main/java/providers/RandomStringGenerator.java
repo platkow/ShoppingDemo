@@ -6,11 +6,11 @@ import java.util.Locale;
 
 public class RandomStringGenerator {
 
-    public String generateRandomString(int length){
+    public String generateRandomString(int length) {
         return RandomStringUtils.randomAlphabetic(length);
     }
 
-    public String generateRandomEmail(int length){
+    public String generateRandomEmail(int length) {
         return (RandomStringUtils.randomAlphabetic(length).toLowerCase(Locale.ROOT) + "@wp.pl");
     }
 }

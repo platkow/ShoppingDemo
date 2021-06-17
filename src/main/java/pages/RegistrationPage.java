@@ -6,10 +6,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
-import java.util.List;
-import java.util.Random;
-
-public class RegistrationPage extends BasePage{
+public class RegistrationPage extends BasePage {
 
     public RegistrationPage(WebDriver driver) {
         super(driver);
@@ -19,13 +16,13 @@ public class RegistrationPage extends BasePage{
     private WebElement genderMaleRadio;
 
     @FindBy(css = "#customer_firstname")
-    private WebElement customerFirstName;
+    private WebElement customerFirstNameFld;
 
     @FindBy(css = "#customer_lastname")
-    private WebElement customerLastName;
+    private WebElement customerLastNameFld;
 
     @FindBy(css = "#passwd")
-    private WebElement password;
+    private WebElement passwordFld;
 
     @FindBy(css = "#days")
     private WebElement days;
@@ -36,39 +33,39 @@ public class RegistrationPage extends BasePage{
     @FindBy(css = "#years")
     private WebElement years;
 
-    @FindBy(css = "#company")
-    private WebElement company;
+    @FindBy(css = "#companyFld")
+    private WebElement companyFld;
 
     @FindBy(css = "#address1")
-    private WebElement address;
+    private WebElement addressFld;
 
-    @FindBy(css = "#city")
-    private WebElement city;
+    @FindBy(css = "#cityFld")
+    private WebElement cityFld;
 
     @FindBy(css = "#id_state")
     private WebElement states;
 
-    @FindBy(css = "#postcode")
-    private WebElement postcode;
+    @FindBy(css = "#postcodeFld")
+    private WebElement postcodeFld;
 
     @FindBy(css = "#id_country")
     private WebElement country;
 
     @FindBy(css = "#phone_mobile")
-    private WebElement mobilePhone;
+    private WebElement mobilePhoneFld;
 
     @FindBy(css = "#alias")
-    private WebElement addressAlias;
+    private WebElement addressAliasFld;
 
     @FindBy(css = "#submitAccount")
     private WebElement submitAccountBtn;
 
 
-    public UserAccountPage registerNewUser(User user){
-        genderMaleRadio.click();
-        customerFirstName.sendKeys(user.getCustomerFirstName());
-        customerLastName.sendKeys(user.getCustomerLastName());
-        password.sendKeys(user.getPassword());
+    public UserAccountPage registerNewUser(User user) {
+        click(genderMaleRadio);
+        sendKeys(customerFirstNameFld, user.getCustomerFirstName());
+        sendKeys(customerLastNameFld, user.getCustomerLastName());
+        sendKeys(passwordFld, user.getPassword());
 
         Select selectDay = new Select(days);
         selectDay.selectByValue(String.valueOf(user.getDayOfBirth()));
@@ -79,23 +76,22 @@ public class RegistrationPage extends BasePage{
         Select selectYear = new Select(years);
         selectYear.selectByValue(String.valueOf(user.getYearOfBirth()));
 
-        company.sendKeys(user.getCompany());
-        address.sendKeys(user.getAddress());
-        city.sendKeys(user.getCity());
+        sendKeys(companyFld, user.getCompany());
+        sendKeys(addressFld, user.getAddress());
+        sendKeys(cityFld, user.getCity());
 
         Select stateSelect = new Select(states);
         stateSelect.selectByValue(String.valueOf(user.getState()));
 
-        postcode.sendKeys(String.valueOf(user.getPostalCode()));
+        sendKeys(postcodeFld, String.valueOf(user.getPostalCode()));
 
         Select selectCountry = new Select(country);
         selectCountry.selectByVisibleText(user.getCountry());
 
-        mobilePhone.sendKeys(String.valueOf(user.getMobilePhone()));
-
-        addressAlias.clear();
-        addressAlias.sendKeys(user.getAddressAlias());
-        submitAccountBtn.click();
+        sendKeys(mobilePhoneFld, String.valueOf(user.getMobilePhone()));
+        addressAliasFld.clear();
+        sendKeys(addressAliasFld, user.getAddressAlias());
+        click(submitAccountBtn);
 
         return new UserAccountPage(getDriver());
     }

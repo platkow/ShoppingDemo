@@ -25,17 +25,18 @@ public class TestBase {
         return logger;
     }
 
+
     @BeforeAll
-    static void setUp(){
+    static void setUp() {
         environmentProperty = EnvironmentProperty.getInstance();
         browserEnvironment = new BrowserEnvironment();
         driver = browserEnvironment.getDriver();
-        driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+        driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);
         logger.debug("Driver initialization.");
     }
 
     @AfterAll
-    static void tearDown(){
+    static void tearDown() {
         driver.quit();
         logger.debug("Driver quit.");
         logger.info(">>>>>>>>>>   End test   >>>>>>>>>>");

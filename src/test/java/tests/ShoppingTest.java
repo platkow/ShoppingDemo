@@ -36,15 +36,16 @@ public class ShoppingTest extends TestBase {
                 .goBackToMainMenu()
                 .openSummerDressesPage()
                 .openProductPage()
+                .zoomProduct()
                 .addProductToCart()
                 .productPageProceedToCheckout()
                 .summaryPageProceedToCheckout()
                 .addressPageProceedToCheckOut()
                 .shippingPageProceedToCheckOut()
-                .choosePaymentMethod()
+                .payByCheck()
                 .conformOrder();
 
-        String actualOrderStatus = paymentPage.getOrderStatus();
+        String actualOrderStatus = paymentPage.getOrderStatusMsg();
         String expectedOrderStatus = System.getProperty("eStatus");
         assertThat(actualOrderStatus, equalTo(expectedOrderStatus));
     }

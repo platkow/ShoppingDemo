@@ -26,32 +26,26 @@ public class BasePage {
     }
 
     public void click(WebElement element) {
-        //logger.info("Clicking on element: " + element.getText());
         element.click();
     }
 
     public void sendKeys(WebElement element, String text) {
-        logger.info("Sending text: " + text + " to element: " + element.getText());
+        logger.info("######## Sending text: " + text + " to element: " + element.getTagName());
         element.sendKeys(text);
     }
 
-    public void select(WebElement element) {
-        logger.info("Select element: " + element);
+    public void selectCbx(WebElement element) {
+        logger.info("######## Select element: " + element.getText());
         if (!element.isSelected()) {
             element.click();
         }
     }
 
     public void mouseHover(WebElement element) {
-        logger.debug("mouseHover perform on the object: " + element.getText());
+        logger.info("######## mouseHover perform on the object: " + element.getText());
         eventFiringMouse = new EventFiringMouse(driver, listener);
         Locatable item = (Locatable) element;
         Coordinates coordinates = item.getCoordinates();
         eventFiringMouse.mouseMove(coordinates);
-        try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
     }
 }

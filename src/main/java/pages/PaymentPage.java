@@ -3,36 +3,32 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import providers.RandomIntGenerator;
 
-import java.util.List;
-
-public class PaymentPage extends BasePage{
-    RandomIntGenerator rnd = new RandomIntGenerator();
+public class PaymentPage extends BasePage {
 
     public PaymentPage(WebDriver driver) {
         super(driver);
     }
 
-    @FindBy(css = ".payment_module")
-    private List<WebElement> paymentMethods;
+    @FindBy(css = ".cheque")
+    private WebElement paymentByCheckBtn;
 
     @FindBy(css = "button.btn.btn-default.button-medium")
     private WebElement confirmOrderBtn;
 
-    @FindBy(css = ".cheque-indent")
-    private WebElement orderStatus;
+    @FindBy(css = ".alert.alert-success")
+    private WebElement orderStatusMsg;
 
-    public PaymentPage choosePaymentMethod(){
-        paymentMethods.get(rnd.generateRandomIndex(paymentMethods.size()));
+    public PaymentPage payByCheck() {
+        click(paymentByCheckBtn);
         return new PaymentPage(getDriver());
     }
 
-    public void conformOrder(){
+    public void conformOrder() {
         click(confirmOrderBtn);
     }
 
-    public String getOrderStatus(){
-        return orderStatus.getText();
+    public String getOrderStatusMsg() {
+        return orderStatusMsg.getText();
     }
 }

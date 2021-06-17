@@ -27,7 +27,7 @@ public class BrowserEnvironment {
     public BrowserEnvironment() {
         this.headlessBrowser = false;
         this.webElementTimeOut = 10;
-        this.webBrowserImplicitTimeOut = 5;
+        this.webBrowserImplicitTimeOut = 20;
         this.attachScreenshot = true;
         logger = LoggerFactory.getLogger("BrowserEnvironment.class");
         this.browserName = PropertyStore.BROWSER.isSpecified() ? PropertyStore.BROWSER.getPropertyValue() : this.browserName;

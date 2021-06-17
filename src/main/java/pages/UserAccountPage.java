@@ -3,9 +3,8 @@ package pages;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import org.openqa.selenium.support.PageFactory;
 
-public class UserAccountPage extends BasePage{
+public class UserAccountPage extends BasePage {
 
     public UserAccountPage(WebDriver driver) {
         super(driver);
@@ -14,7 +13,7 @@ public class UserAccountPage extends BasePage{
     @FindBy(xpath = "//a[@title='Home']")
     private WebElement homeBtn;
 
-    public MenuPage goBackToMainMenu(){
+    public MenuPage goBackToMainMenu() {
         click(homeBtn);
         return new MenuPage(getDriver());
     }

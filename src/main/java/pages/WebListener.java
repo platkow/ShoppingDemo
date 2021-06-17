@@ -10,15 +10,6 @@ public class WebListener extends AbstractWebDriverEventListener {
     Logger logger = LoggerFactory.getLogger(WebListener.class);
 
     public void beforeClickOn(WebElement element, WebDriver driver) {
-        logger.info(">>>>>>>>>>> Before clicking on element: " + element.getText() + " <<<<<<<<<<<");
-    }
-
-    public void beforeGetText(WebElement element, WebDriver driver) {
-        logger.info(">>>>>>>>>>> Before getting text form element: " + element.getText() + " <<<<<<<<<<<");
-    }
-
-    //pomysl czy dodać after
-    public void beforeChangeValueOf(WebElement element, WebDriver driver, CharSequence[] keysToSend) {
-        logger.info(">>>>>>>>>>> Before changing value of element: " + element.getText() + " <<<<<<<<<<<");
+        logger.info(">>>>>>>>>>> Before clicking on element: " + element.getTagName() + " " + element.getText() + " <<<<<<<<<<<");
     }
 }
