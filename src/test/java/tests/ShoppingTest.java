@@ -28,7 +28,7 @@ public class ShoppingTest extends TestBase {
     }
 
     @Test
-    @DisplayName("Automation practice")
+    @DisplayName("Automation practice register & buy")
     public void shouldBuyProduct() {
         logger.info(">>>>>>>>>>   Start test   >>>>>>>>>>");
 

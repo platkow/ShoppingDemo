@@ -6,6 +6,8 @@ import org.openqa.selenium.interactions.Coordinates;
 import org.openqa.selenium.interactions.Locatable;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.events.internal.EventFiringMouse;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,11 +28,14 @@ public class BasePage {
     }
 
     public void click(WebElement element) {
+        getElement(element);
         element.click();
     }
 
     public void sendKeys(WebElement element, String text) {
+        getElement(element);
         logger.info("######## Sending text: " + text + " to element: " + element.getTagName());
+        element.clear();
         element.sendKeys(text);
     }
 
@@ -47,5 +52,12 @@ public class BasePage {
         Locatable item = (Locatable) element;
         Coordinates coordinates = item.getCoordinates();
         eventFiringMouse.mouseMove(coordinates);
+    }
+
+    public WebElement getElement(WebElement element) {
+        WebDriverWait wait = new WebDriverWait(driver, 10);
+        wait.until(ExpectedConditions.visibilityOf(element));
+        logger.info("######### Checking if element: " + element.getTagName() + " " + element.getText() + " is present.");
+        return element;
     }
 }
