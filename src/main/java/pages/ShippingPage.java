@@ -17,6 +17,7 @@ public class ShippingPage extends BasePage {
 
     public PaymentPage shippingPageProceedToCheckOut() {
         selectCbx(termsOfServiceCbx);
+        System.out.println("Marking checkobox success!");
         click(shippingPageProceedToCheckOutBtn);
         return new PaymentPage(getDriver());
     }

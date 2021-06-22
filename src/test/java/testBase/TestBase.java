@@ -9,8 +9,6 @@ import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import java.util.concurrent.TimeUnit;
-
 public class TestBase {
     protected static WebDriver driver;
     private static Logger logger = LoggerFactory.getLogger("TestBase.class");
@@ -25,13 +23,11 @@ public class TestBase {
         return logger;
     }
 
-
     @BeforeAll
     static void setUp() {
         environmentProperty = EnvironmentProperty.getInstance();
         browserEnvironment = new BrowserEnvironment();
         driver = browserEnvironment.getDriver();
-        driver.manage().timeouts().implicitlyWait(browserEnvironment.getWebBrowserImplicitTimeOut(), TimeUnit.SECONDS);
         logger.debug("Driver initialization.");
     }
 

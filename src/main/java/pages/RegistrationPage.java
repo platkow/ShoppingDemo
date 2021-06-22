@@ -6,13 +6,15 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.ui.Select;
 
+
+
 public class RegistrationPage extends BasePage {
 
     public RegistrationPage(WebDriver driver) {
         super(driver);
     }
 
-    @FindBy(css = "#id_gender1")
+    @FindBy(id = "id_gender1")
     private WebElement genderMaleRadio;
 
     @FindBy(css = "#customer_firstname")
@@ -21,7 +23,7 @@ public class RegistrationPage extends BasePage {
     @FindBy(css = "#customer_lastname")
     private WebElement customerLastNameFld;
 
-    @FindBy(css = "#passwd")
+    @FindBy(id = "passwd")
     private WebElement passwordFld;
 
     @FindBy(css = "#days")
@@ -62,6 +64,7 @@ public class RegistrationPage extends BasePage {
 
 
     public UserAccountPage registerNewUser(User user) {
+        waitForLoadedPage(genderMaleRadio);
         click(genderMaleRadio);
         sendKeys(customerFirstNameFld, user.getCustomerFirstName());
         sendKeys(customerLastNameFld, user.getCustomerLastName());

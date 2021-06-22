@@ -20,6 +20,7 @@ public class MenuPage extends BasePage {
     private WebElement summerDressesLink;
 
     public LoginPage openLoginPage() {
+        waitForLoadedPage(signInBtn);
         click(signInBtn);
         return new LoginPage(getDriver());
     }

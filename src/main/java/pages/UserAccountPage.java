@@ -14,6 +14,7 @@ public class UserAccountPage extends BasePage {
     private WebElement homeBtn;
 
     public MenuPage goBackToMainMenu() {
+        waitForLoadedPage(homeBtn);
         click(homeBtn);
         return new MenuPage(getDriver());
     }
